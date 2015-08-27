@@ -46,4 +46,28 @@ class PostRelationsTest extends RateableTestCase
         // should drop to 30%
         $this->assertEquals(30, $post2->ratingPercent(10));
     }
+
+    public function testPlusOneStyleRatings()
+    {
+        $post = Post::find(3);
+
+        $this->assertEquals(0, $post->sumRating);
+        $this->assertEquals(0, $post->sumRating());
+
+        $rating = new willvincent\Rateable\Rating;
+        $rating->rating = 1;
+        $rating->user_id = 1;
+        $post->ratings()->save($rating);
+
+        $this->assertEquals(1, $post->sumRating);
+        $this->assertEquals(1, $post->sumRating());
+
+        $rating = new willvincent\Rateable\Rating;
+        $rating->rating = -1;
+        $rating->user_id = 2;
+        $post->ratings()->save($rating);
+
+        $this->assertEquals(0, $post->sumRating);
+        $this->assertEquals(0, $post->sumRating());
+    }
 }

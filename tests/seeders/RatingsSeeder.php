@@ -12,6 +12,7 @@ class RatingsSeeder
 
         $post1 = Post::find(1);
         $post2 = Post::find(2);
+        $post3 = Post::find(3);
         $user1 = User::find(1);
         $user2 = User::find(2);
 
