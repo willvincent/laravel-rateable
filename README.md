@@ -1,6 +1,6 @@
 # Laravel Rateable
 
-[![Build Status](https://travis-ci.org/willvincent/laravel-rateable.svg?branch=2.0)](https://travis-ci.org/willvincent/laravel-rateable)
+[![Build Status](https://travis-ci.org/willvincent/laravel-rateable.svg?branch=master)](https://travis-ci.org/willvincent/laravel-rateable)
 
 Allows for fivestar style rating to be added to multiple models within your app for Laravel 5.
 
