@@ -19,6 +19,13 @@ trait Rateable
             ->pluck('averageRating');
     }
 
+    public function sumRating()
+    {
+        return $this->ratings()
+            ->selectRaw('SUM(rating) as sumRating')
+            ->pluck('sumRating');
+    }
+
     public function ratingPercent($max = 5)
     {
         $ratings = $this->ratings();
@@ -31,4 +38,10 @@ trait Rateable
     {
         return $this->averageRating();
     }
+
+    public function getSumRatingAttribute()
+    {
+        return $this->sumRating();
+    }
+
 }
