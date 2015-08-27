@@ -5,7 +5,9 @@
 
 [![Total Downloads](https://poser.pugx.org/willvincent/laravel-rateable/downloads.svg)](https://packagist.org/packages/willvincent/laravel-rateable) [![Monthly Downloads](https://poser.pugx.org/willvincent/laravel-rateable/d/monthly.png)](https://packagist.org/packages/willvincent/laravel-rateable) [![Daily Downloads](https://poser.pugx.org/willvincent/laravel-rateable/d/daily.png)](https://packagist.org/packages/willvincent/laravel-rateable)
 
-Allows for fivestar style rating to be added to multiple models within your app for Laravel 5.
+Provides a trait to allow rating of multiple models within your app for Laravel 5.
+
+Ratings could be fivestar style, or simple +1/-1 style.
 
 # Installation
 Edit your project's composer.json file to require `willvincent/laravel-rateable`.
