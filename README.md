@@ -1,9 +1,8 @@
 # Laravel Rateable
 
-[![Build Status](https://travis-ci.org/RomainLanz/laravel-commentable.svg?branch=2.0)](https://travis-ci.org/RomainLanz/laravel-commentable)
-[![Downloads](https://poser.pugx.org/lanz/laravel-commentable/downloads.svg)](https://packagist.org/packages/lanz/laravel-commentable)
+[![Build Status](https://travis-ci.org/willvincent/laravel-rateable.svg?branch=2.0)](https://travis-ci.org/willvincent/laravel-rateable)
 
-Allows for fivestar style rating to be added to multiple and different models within your app for Laravel 5.
+Allows for fivestar style rating to be added to multiple models within your app for Laravel 5.
 
 # Installation
 Edit your project's composer.json file to require `willvincent/laravel-rateable`.
