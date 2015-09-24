@@ -31,7 +31,7 @@ trait Rateable
         $ratings = $this->ratings();
         $quantity = $ratings->count();
         $total = $ratings->selectRaw('SUM(rating) as total')->pluck('total');
-        return $total / (($quantity * $max) / 100);
+        return ($quantity * $max) > 0 ? $total / (($quantity * $max) / 100) : 0;
     }
 
     public function getAverageRatingAttribute()
