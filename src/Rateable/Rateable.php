@@ -14,23 +14,19 @@ trait Rateable
 
     public function averageRating()
     {
-        return $this->ratings()
-            ->selectRaw('AVG(rating) as averageRating')
-            ->pluck('averageRating');
+        return $this->ratings()->avg('rating');
     }
 
     public function sumRating()
     {
-        return $this->ratings()
-            ->selectRaw('SUM(rating) as sumRating')
-            ->pluck('sumRating');
+        return $this->ratings()->sum('rating');
     }
 
     public function ratingPercent($max = 5)
     {
-        $ratings = $this->ratings();
-        $quantity = $ratings->count();
-        $total = $ratings->selectRaw('SUM(rating) as total')->pluck('total');
+        $quantity = $this->ratings()->count();
+        $total = $this->sumRating();
+        
         return ($quantity * $max) > 0 ? $total / (($quantity * $max) / 100) : 0;
     }
 
@@ -43,5 +39,4 @@ trait Rateable
     {
         return $this->sumRating();
     }
-
 }
