@@ -18,9 +18,9 @@ class RateableServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->commands('command.rateable.migration');
-        $this->app->bindShared('command.rateable.migration', function ($app) {
+        $this->app->bind('command.rateable.migration', function ($app) {
             return new MigrationCommand();
-        });
+        }, TRUE);
     }
 
     /**
