@@ -1,6 +1,7 @@
 # Laravel Rateable
 
 [![Build Status](https://travis-ci.org/willvincent/laravel-rateable.svg?branch=master)](https://travis-ci.org/willvincent/laravel-rateable)
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/08d52e5f-e13b-42db-bf3f-821d4005e6a6.svg?style=flat-square)](https://insight.sensiolabs.com/projects/08d52e5f-e13b-42db-bf3f-821d4005e6a6)
 [![Latest Stable Version](https://poser.pugx.org/willvincent/laravel-rateable/v/stable.svg)](https://packagist.org/packages/willvincent/laravel-rateable) [![License](https://poser.pugx.org/willvincent/laravel-rateable/license.svg)](https://packagist.org/packages/willvincent/laravel-rateable)
 
 [![Total Downloads](https://poser.pugx.org/willvincent/laravel-rateable/downloads.svg)](https://packagist.org/packages/willvincent/laravel-rateable) [![Monthly Downloads](https://poser.pugx.org/willvincent/laravel-rateable/d/monthly.png)](https://packagist.org/packages/willvincent/laravel-rateable) [![Daily Downloads](https://poser.pugx.org/willvincent/laravel-rateable/d/daily.png)](https://packagist.org/packages/willvincent/laravel-rateable)
