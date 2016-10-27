@@ -89,7 +89,7 @@ dd($post->averageRating);
 
 Also, you can fetch the rating percentage. This is also how you enforce a maximum rating value.
 ````php
-$post = Post::find();
+$post = Post::first();
 
 dd($post->ratingPercent(10)); // Ten star rating system
 // Note: The value passed in is treated as the maximum allowed value.
@@ -98,3 +98,16 @@ dd($post->ratingPercent(10)); // Ten star rating system
 // $post->ratingPercent(5) -- Five star rating system totally equivilent to:
 // $post->ratingPercent()
 ````
+
+You can also fetch the sum or average of ratings for the given rateable item the current (authorized) has voted/rated.
+```
+$post = Post::first();
+
+// These values depend on the user being logged in,
+// they use the Auth facade to fetch the current user's id.
+
+
+dd($post->userAverageRating); 
+
+dd($post->userSumRating);
+```
