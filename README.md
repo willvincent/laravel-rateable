@@ -100,7 +100,7 @@ dd($post->ratingPercent(10)); // Ten star rating system
 ````
 
 You can also fetch the sum or average of ratings for the given rateable item the current (authorized) has voted/rated.
-```
+````php
 $post = Post::first();
 
 // These values depend on the user being logged in,
@@ -110,4 +110,4 @@ $post = Post::first();
 dd($post->userAverageRating); 
 
 dd($post->userSumRating);
-```
+````
