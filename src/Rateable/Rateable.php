@@ -22,11 +22,21 @@ trait Rateable
         return $this->ratings()->sum('rating');
     }
 
+    public function userAverageRating()
+    {
+        return $this->ratings()->where('user_id', \Auth::id())->avg('rating');
+    }
+
+    public function userSumRating()
+    {
+        return $this->ratings()->where('user_id', \Auth::id())->sum('rating');
+    }
+
     public function ratingPercent($max = 5)
     {
         $quantity = $this->ratings()->count();
         $total = $this->sumRating();
-        
+
         return ($quantity * $max) > 0 ? $total / (($quantity * $max) / 100) : 0;
     }
 
@@ -38,5 +48,15 @@ trait Rateable
     public function getSumRatingAttribute()
     {
         return $this->sumRating();
+    }
+
+    public function getUserAverageRatingAttribute()
+    {
+        return $this->userAverageRating();
+    }
+
+    public function getUserSumRatingAttribute()
+    {
+        return $this->userSumRating();
     }
 }
