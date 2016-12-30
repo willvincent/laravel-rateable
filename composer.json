@@ -1,5 +1,5 @@
 {
-    "name": "willvincent/laravel-rateable",
+    "name": "collingmedia/laravel-rateable",
     "description": "Allows multiple models to be rated with a fivestar like system.",
     "keywords": [
         "laravel",
