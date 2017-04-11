@@ -60,7 +60,7 @@ class MigrationCommand extends Command
     {
         $migration_file = base_path('/database/migrations').'/'.date('Y_m_d_His').'_create_ratings_table.php';
         if (! file_exists($migration_file) && $fs = fopen($migration_file, 'x')) {
-            fwrite($fs, file_get_contents(__DIR__.'/../migrations/create_ratings_table.php'));
+            fwrite($fs, file_get_contents(__DIR__.'/../database/migrations/create_ratings_table.php'));
             fclose($fs);
             return true;
         }
