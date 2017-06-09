@@ -2,6 +2,7 @@
 
 trait Rateable
 {
+
     /**
      * This model has many ratings.
      *
@@ -12,29 +13,36 @@ trait Rateable
         return $this->morphMany('willvincent\Rateable\Rating', 'rateable');
     }
 
-    public function averageRating()
+    public function averageRating($round = null)
     {
-        return $this->ratings()->avg('rating');
+        $rating = $this->ratings()->where('approved', TRUE)->avg('rating');
+        if ($round !== null) {
+            // round(3.6);          4
+            // round(3.6, 0);       4
+            // round(1.95583, 2);   1.96
+            $rating = round($rating, $round);
+        }
+        return $rating;
     }
 
     public function sumRating()
     {
-        return $this->ratings()->sum('rating');
+        return $this->ratings()->where('approved', TRUE)->sum('rating');
     }
 
     public function userAverageRating()
     {
-        return $this->ratings()->where('user_id', \Auth::id())->avg('rating');
+        return $this->ratings()->where('approved', TRUE)->where('user_id', \Auth::id())->avg('rating');
     }
 
     public function userSumRating()
     {
-        return $this->ratings()->where('user_id', \Auth::id())->sum('rating');
+        return $this->ratings()->where('approved', TRUE)->where('user_id', \Auth::id())->sum('rating');
     }
 
     public function ratingPercent($max = 5)
     {
-        $quantity = $this->ratings()->count();
+        $quantity = $this->ratings()->where('approved', TRUE)->count();
         $total = $this->sumRating();
 
         return ($quantity * $max) > 0 ? $total / (($quantity * $max) / 100) : 0;
@@ -59,4 +67,5 @@ trait Rateable
     {
         return $this->userSumRating();
     }
+
 }
