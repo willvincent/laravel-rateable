@@ -12,12 +12,16 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->integer('rating');
-            $table->morphs('rateable');
             $table->unsignedInteger('user_id')->index();
+            $table->unsignedInteger('rating');
+            $table->string('title')->nullable();
+            $table->text('body')->nullable();
+            $table->boolean('approved')->default(false);
+            $table->string('ip_address', 50)->nullable();
+            $table->morphs('rateable');
             $table->index('rateable_id');
             $table->index('rateable_type');
+            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
