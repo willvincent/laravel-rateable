@@ -27,6 +27,11 @@ class Rating extends Model
      */
     public function user()
     {
-        return $this->belongsTo(Config::get('auth.providers.users.model'));
+        $userClassName = Config::get('auth.model');
+        if (is_null($userClassName)) {
+            $userClassName = Config::get('auth.providers.users.model');
+        }
+
+        return $this->belongsTo($userClassName);
     }
 }
