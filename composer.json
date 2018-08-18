@@ -32,5 +32,12 @@
         "psr-4": {
             "willvincent\\Rateable\\": "src/Rateable"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "willvincent\\Rateable\\RateableServiceProvider"
+            ]
+        }
     }
 }
