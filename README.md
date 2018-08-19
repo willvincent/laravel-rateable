@@ -6,24 +6,19 @@
 
 [![Total Downloads](https://poser.pugx.org/willvincent/laravel-rateable/downloads.svg)](https://packagist.org/packages/willvincent/laravel-rateable) [![Monthly Downloads](https://poser.pugx.org/willvincent/laravel-rateable/d/monthly.png)](https://packagist.org/packages/willvincent/laravel-rateable) [![Daily Downloads](https://poser.pugx.org/willvincent/laravel-rateable/d/daily.png)](https://packagist.org/packages/willvincent/laravel-rateable)
 
-Provides a trait to allow rating of multiple models within your app for Laravel 5.
+Provides a trait to allow rating of any Eloquent models within your app for Laravel 5.
 
 Ratings could be fivestar style, or simple +1/-1 style.
 
 # Installation
-Edit your project's composer.json file to require `willvincent/laravel-rateable`.
-````
-"require": {
-  "willvincent/laravel-rateable": "~1.0"
-}
-````
+Require the package using Composer:
 
-Next, update Composer from the terminal.
-````
-composer update
-````
+```
+composer require willvincent/laravel-rateable
+```
 
-As with most Laravel packages you'll need to register Rateable *service provider*. In your `config/app.php` add `'willvincent\Rateable\RateableServiceProvider'` to the end of the `$providers` array.
+As with most Laravel packages you'll need to register the Rateable *service provider*. In your `config/app.php` add `'willvincent\Rateable\RateableServiceProvider'` to the end of the `$providers` array.
+
 ````php
 'providers' => [
 
@@ -49,7 +44,8 @@ php artisan migrate
 After the migration, one new table will be present, `ratings`.
 
 # Usage
-You need to set on your model that it is rateable.
+In order to mark a model as "rateable", import the `Rateable` trait.
+
 ````php
 <?php namespace App;
 
@@ -58,7 +54,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-
     use Rateable;
 
 }
@@ -67,6 +62,7 @@ class Post extends Model
 Now, your model has access to a few additional methods.
 
 First, to add a rating to your model:
+
 ````php
 $post = Post::first();
 
@@ -88,6 +84,7 @@ dd($post->averageRating);
 ````
 
 Also, you can fetch the rating percentage. This is also how you enforce a maximum rating value.
+
 ````php
 $post = Post::first();
 
