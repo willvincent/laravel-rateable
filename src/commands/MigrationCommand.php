@@ -9,7 +9,6 @@ class MigrationCommand extends Command
      *
      * @var string
      */
-
     protected $name = 'rateable:migration';
 
     /**
@@ -32,21 +31,25 @@ class MigrationCommand extends Command
      */
     public function handle()
     {
-        $this->line('');
         $this->info('Tables: ratings');
-        $this->comment('A migration that creates "ratings" tables will be created in app/database/migrations directory');
         $this->line('');
-        if ($this->confirm("Proceed with the migration creation? [Yes|no]")) {
+        $this->comment('A migration that creates a "ratings" table will be created in the `database/migrations` directory');
+        $this->line('');
+
+        if ($this->confirm("Proceed with the migration creation?")) {
             $this->line('');
             $this->info("Creating migration...");
+            $this->line('');
+
             if ($this->createMigration()) {
                 $this->info("Migration successfully created!");
             } else {
                 $this->error(
                     "Coudn't create migration.\n Check the write permissions".
-                    " within the app/database/migrations directory."
+                    " within the `database/migrations` directory."
                 );
             }
+
             $this->line('');
         }
     }
@@ -58,12 +61,14 @@ class MigrationCommand extends Command
      */
     protected function createMigration()
     {
-        $migration_file = base_path('/database/migrations').'/'.date('Y_m_d_His').'_create_ratings_table.php';
+        $migration_file = database_path('migrations').'/'.date('Y_m_d_His').'_create_ratings_table.php';
+
         if (! file_exists($migration_file) && $fs = fopen($migration_file, 'x')) {
             fwrite($fs, file_get_contents(__DIR__.'/../migrations/create_ratings_table.php'));
             fclose($fs);
             return true;
         }
+
         return false;
     }
 }
