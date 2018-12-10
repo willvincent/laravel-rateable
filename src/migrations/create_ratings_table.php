@@ -16,8 +16,6 @@ class CreateRatingsTable extends Migration
             $table->integer('rating');
             $table->morphs('rateable');
             $table->unsignedInteger('user_id')->index();
-            $table->index('rateable_id');
-            $table->index('rateable_type');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
