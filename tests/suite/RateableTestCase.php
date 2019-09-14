@@ -1,6 +1,7 @@
 <?php
+use PHPUnit\Framework\TestCase;
 
-class RateableTestCase extends PHPUnit_Framework_TestCase
+class RateableTestCase extends TestCase
 {
 
     public static function setUpBeforeClass()
