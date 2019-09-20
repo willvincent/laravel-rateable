@@ -10,6 +10,11 @@ Provides a trait to allow rating of any Eloquent models within your app for Lara
 
 Ratings could be fivestar style, or simple +1/-1 style.
 
+## Compatability
+
+Laravel versions < 6.x should use the 1.x releases
+While 2.x release may at least temporarily work with most recent laravel 5.x versions, any new development will be explicitly focused on laravel 6.x compatibility and breaking changes may occur, therefore, installation of 2.x releases with laravel versions < 6.x is not recommended, and done at your own peril.
+
 # Installation
 Require the package using Composer:
 
