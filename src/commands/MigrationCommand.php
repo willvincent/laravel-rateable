@@ -61,14 +61,16 @@ class MigrationCommand extends Command
      */
     protected function createMigration()
     {
-        $migration_file = database_path('migrations').'/'.date('Y_m_d_His').'_create_ratings_table.php';
+      $migration_file = database_path('migrations').'/'.date('Y_m_d_His').'_create_ratings_table.php';
 
-        if (! file_exists($migration_file) && $fs = fopen($migration_file, 'x')) {
-            fwrite($fs, file_get_contents(__DIR__.'/../migrations/create_ratings_table.php'));
-            fclose($fs);
-            return true;
-        }
+      $existing = glob(database_path('migrations').'/*_create_ratings_table.php');
 
-        return false;
-    }
+      if (empty($existing) && $fs = fopen($migration_file, 'x')) {
+          fwrite($fs, file_get_contents(__DIR__.'/../migrations/create_ratings_table.php'));
+          fclose($fs);
+          return true;
+      }
+
+      return false;
+  }
 }
