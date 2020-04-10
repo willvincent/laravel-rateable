@@ -7,7 +7,7 @@
         "rating",
         "vote",
         "fivestar",
-        "laravel 6"
+        "laravel 7"
     ],
     "license": "MIT",
     "authors": [
@@ -18,8 +18,8 @@
     ],
     "require": {
         "php": ">=7.2",
-        "illuminate/support": "~6.0",
-        "illuminate/database": "~6.0"
+        "illuminate/support": "^6.0|^7.0",
+        "illuminate/database": "^6.0|^7.0"
 
     },
     "require-dev": {
