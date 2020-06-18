@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Database\Capsule\Manager as DB;
+namespace willvincent\Rateable\Tests\Database\seeders;
 
-class PostSeeder
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use willvincent\Rateable\Tests\models\Post;
+
+class PostSeeder extends Seeder
 {
     public function run()
     {
@@ -13,5 +17,4 @@ class PostSeeder
         Post::create(['id' => 3, 'title' => 'Third post', 'body' => 'This is the third post!']);
         Post::reguard();
     }
-
 }

@@ -1,10 +1,13 @@
 <?php
 
-use Illuminate\Database\Capsule\Manager as DB;
+namespace willvincent\Rateable\Tests\Database\seeders;
 
-class UserSeeder
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use willvincent\Rateable\Tests\models\User;
+
+class UserSeeder extends Seeder
 {
-
     public function run()
     {
         DB::table('users')->delete();
@@ -13,5 +16,4 @@ class UserSeeder
         User::create(['id' => 2]);
         User::reguard();
     }
-
 }

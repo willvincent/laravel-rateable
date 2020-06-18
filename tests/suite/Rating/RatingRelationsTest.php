@@ -1,8 +1,11 @@
 <?php
 
-class RatingRelationsTest extends RateableTestCase
-{
 
+use willvincent\Rateable\Tests\models\Rating;
+use willvincent\Rateable\Tests\TestCase;
+
+class RatingRelationsTest extends TestCase
+{
     public function testRateableIsAMorphTo()
     {
         $rating = new Rating();
@@ -14,5 +17,4 @@ class RatingRelationsTest extends RateableTestCase
         $rating = new Rating();
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Relations\BelongsTo', $rating->user());
     }
-
 }

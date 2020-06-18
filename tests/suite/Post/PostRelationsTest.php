@@ -1,7 +1,19 @@
 <?php
 
-class PostRelationsTest extends RateableTestCase
+namespace willvincent\Rateable\Tests\suite\Post;
+
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use willvincent\Rateable\Tests\models\Post;
+use willvincent\Rateable\Tests\TestCase;
+
+/**
+ * @internal
+ * @coversNothing
+ */
+class PostRelationsTest extends TestCase
 {
+    use DatabaseTransactions;
 
     public function testRatingsIsAMorphMany()
     {
@@ -14,6 +26,14 @@ class PostRelationsTest extends RateableTestCase
         $post1 = Post::find(1);
         $post2 = Post::find(2);
 
+        $this->be(User::find(1));
+        $post1->rate(5);
+        $post2->rate(1);
+
+        $this->be(User::find(2));
+        $post1->rate(5);
+        $post2->rate(5);
+
         $this->assertEquals(2, $post1->ratings()->count());
         $this->assertEquals(2, $post2->ratings()->count());
     }
@@ -23,6 +43,14 @@ class PostRelationsTest extends RateableTestCase
         $post1 = Post::find(1);
         $post2 = Post::find(2);
 
+        $this->be(User::find(1));
+        $post1->rate(5);
+        $post2->rate(1);
+
+        $this->be(User::find(2));
+        $post1->rate(5);
+        $post2->rate(5);
+
         $this->assertEquals(5.0, $post1->averageRating);
         $this->assertEquals(3.0, $post2->averageRating);
     }
@@ -31,6 +59,14 @@ class PostRelationsTest extends RateableTestCase
     {
         $post1 = Post::find(1);
         $post2 = Post::find(2);
+
+        $this->be(User::find(1));
+        $post1->rate(5);
+        $post2->rate(1);
+
+        $this->be(User::find(2));
+        $post1->rate(5);
+        $post2->rate(5);
 
         // Post 1 should have a perfect 100% rating
         $this->assertEquals(100, $post1->ratingPercent());
@@ -53,21 +89,41 @@ class PostRelationsTest extends RateableTestCase
 
         $this->assertEquals(0, $post->sumRating);
         $this->assertEquals(0, $post->sumRating());
+        $this->assertEquals(0, $post->ratings()->count());
 
-        $rating = new willvincent\Rateable\Rating;
-        $rating->rating = 1;
-        $rating->user_id = 1;
-        $post->ratings()->save($rating);
+        $this->be(User::find(1));
+        $post->rate(1);
 
         $this->assertEquals(1, $post->sumRating);
         $this->assertEquals(1, $post->sumRating());
+        $this->assertEquals(1, $post->ratings()->count());
 
-        $rating = new willvincent\Rateable\Rating;
-        $rating->rating = -1;
-        $rating->user_id = 2;
-        $post->ratings()->save($rating);
+        $this->be(User::find(2));
+        $post->rate(-1);
 
         $this->assertEquals(0, $post->sumRating);
         $this->assertEquals(0, $post->sumRating());
+        $this->assertEquals(2, $post->ratings()->count());
+        $this->assertEquals(2, $post->usersRated());
+    }
+
+    public function testUsersCanRateOnlyOnce()
+    {
+        $post = Post::find(1);
+
+        $this->assertEquals(0, $post->ratings()->count());
+
+        $this->be(User::find(1));
+        $post->rateOnce(3);
+
+        $this->assertEquals(3, $post->sumRating);
+        $this->assertEquals(1, $post->ratings()->count());
+
+        $this->be(User::find(1));
+        $post->rateOnce(5);
+
+        $this->assertEquals(5, $post->sumRating);
+        $this->assertEquals(1, $post->ratings()->count());
+        $this->assertEquals(1, $post->usersRated());
     }
 }
