@@ -3,6 +3,10 @@
 All notable changes to `laravel-rateable` will be documented in this file
 
 
+## 2.2.1
+- @tumelo-mapheto - Fix typo preventing vendor publish from successfully publishing the migration file
+
+
 ## 2.2.0
 
 - Refactor codebase to be based on spatie's [package-skeleton-laravel](https://github.com/spatie/package-skeleton-laravel)
