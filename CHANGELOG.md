@@ -4,7 +4,7 @@ All notable changes to `laravel-rateable` will be documented in this file
 
 
 ## 2.2.1
-- @tumelo-mapheto - Fix typo preventing vendor publish from successfully publishing the migration file
+- [tumelo-mapheto](https://github.com/tumelo-mapheto) - Fix typo preventing vendor publish from successfully publishing the migration file
 
 
 ## 2.2.0
@@ -16,17 +16,17 @@ All notable changes to `laravel-rateable` will be documented in this file
 
 ## 2.1.0
 
-- @Mo7sin - Laravel 7 support
+- [Mo7sin](https://github.com/Mo7sin) - Laravel 7 support
 
 
 ## 2.0.0
 
-- @khanhvu14 - Laravel 6 support
+- [khanhvu14](https://github.com/khanhvu14) - Laravel 6 support
 
 
 ## 1.0.9
 
-- @Devsome - Fix migration error
+- [Devsome](https://github.com/Devsome) - Fix migration error
 
 
 ## 1.0.8
@@ -41,18 +41,18 @@ Redacted
 
 ## 1.0.6
 
-- @mattstauffer - Allow for Laravel Service Provider autodiscovery (#27)
-- @mattstauffer - Readme cleanup (#28)
+- [mattstauffer](https://github.com/mattstauffer) - Allow for Laravel Service Provider autodiscovery (#27)
+- [mattstauffer](https://github.com/mattstauffer) - Readme cleanup (#28)
 
 
 ## 1.0.5
 
-- @mkwsra - Fix user relations
+- [mkwsra](https://github.com/mkwsra) - Fix user relations
 
 
 ## 1.0.4
 
-- @nghtstr & @willvincent - Added sum and average attributes
+- [nghtstr](https://github.com/nghtstr) & [willvincent](https://github.com/willvincent) - Added sum and average attributes
 
 
 ## 1.0.3
@@ -62,7 +62,7 @@ Redacted
 
 ## 1.0.2
 
-- @zOxta - Added protection for division by zero
+- [zOxta](https://github.com/zOxta) - Added protection for division by zero
 
 
 ## 1.0.1
