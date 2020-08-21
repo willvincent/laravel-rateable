@@ -11,6 +11,7 @@ trait Rateable
      *
      * @param mixed $rating
      * @param mixed $value
+     * @param string $comment
      *
      * @return Rating
      */
