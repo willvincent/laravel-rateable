@@ -1,5 +1,5 @@
 {
-    "name": "willvincent/laravel-rateable",
+    "name": "chikeozulumba/laravel-rateable",
     "description": "Allows multiple models to be rated with a fivestar like system.",
     "keywords": [
         "laravel",
@@ -9,18 +9,18 @@
         "fivestar",
         "laravel 7"
     ],
-    "homepage": "https://github.com/willvincent/laravel-rateable",
+    "homepage": "https://github.com/chikeozulumba/laravel-rateable",
     "license": "MIT",
     "authors": [
         {
-            "name": "Will Vincent",
-            "email": "tcindie@gmail.com",
-            "homepage": "https://willvincent.com"
+            "name": "Chike Ozulumba",
+            "email": "o.devcode@gmail.com",
+            "homepage": "https://chike.cloud"
         }
     ],
     "require": {
         "php": ">=7.2",
-        "illuminate/support": "^6.0|^7.0",
+        "illuminate/support": "^6.0|^7.0|6.0.0|6.x-dev|7.0.0|7.x-dev",
         "illuminate/database": "^6.0|^7.0"
     },
     "require-dev": {
@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "willvincent\\Rateable\\": "src"
+            "chikeozulumba\\Rateable\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "willvincent\\Rateable\\Tests\\": "tests"
+            "chikeozulumba\\Rateable\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -52,7 +52,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "willvincent\\Rateable\\RateableServiceProvider"
+                "chikeozulumba\\Rateable\\RateableServiceProvider"
             ]
         }
     },
