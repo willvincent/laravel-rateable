@@ -26,7 +26,7 @@ trait Rateable
     public function rateOnce($value)
     {
         $rating = Rating::query()
-            ->where('rateable_type', '=', get_class($this))
+            ->where('rateable_type', '=', $this->getMorphClass())
             ->where('rateable_id', '=', $this->id)
             ->where('user_id', '=', Auth::id())
             ->first()
