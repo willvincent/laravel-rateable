@@ -11,19 +11,21 @@ trait Rateable
      *
      * @param mixed $rating
      * @param mixed $value
+     * @param string $comment
      *
      * @return Rating
      */
-    public function rate($value)
+    public function rate($value, $comment = null)
     {
         $rating = new Rating();
         $rating->rating = $value;
+        $rating->comment = $comment;
         $rating->user_id = Auth::id();
 
         $this->ratings()->save($rating);
     }
 
-    public function rateOnce($value)
+    public function rateOnce($value, $comment = null)
     {
         $rating = Rating::query()
             ->where('rateable_type', '=', $this->getMorphClass())
@@ -36,7 +38,7 @@ trait Rateable
             $rating->rating = $value;
             $rating->save();
         } else {
-            $this->rate($value);
+            $this->rate($value, $comment);
         }
     }
 
