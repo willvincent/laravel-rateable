@@ -36,6 +36,7 @@ trait Rateable
 
         if ($rating) {
             $rating->rating = $value;
+            $rating->comment = $comment;
             $rating->save();
         } else {
             $this->rate($value, $comment);
