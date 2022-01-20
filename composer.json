@@ -23,7 +23,7 @@
     "require": {
         "php": ">=7.2",
         "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
-        "illuminate/database": "^6.0|^7.0|^8.0|^9.0"
+        "illuminate/database": "^7.30.4|^8.0|^9.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
