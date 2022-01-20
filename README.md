@@ -1,11 +1,10 @@
 # Laravel Rateable
 
-[![Build Status](https://travis-ci.org/willvincent/laravel-rateable.svg?branch=master)](https://travis-ci.org/willvincent/laravel-rateable)
 [![Latest Stable Version](https://poser.pugx.org/willvincent/laravel-rateable/v/stable.svg)](https://packagist.org/packages/willvincent/laravel-rateable) [![License](https://poser.pugx.org/willvincent/laravel-rateable/license.svg)](https://packagist.org/packages/willvincent/laravel-rateable)
 
 [![Total Downloads](https://poser.pugx.org/willvincent/laravel-rateable/downloads.svg)](https://packagist.org/packages/willvincent/laravel-rateable) [![Monthly Downloads](https://poser.pugx.org/willvincent/laravel-rateable/d/monthly.png)](https://packagist.org/packages/willvincent/laravel-rateable) [![Daily Downloads](https://poser.pugx.org/willvincent/laravel-rateable/d/daily.png)](https://packagist.org/packages/willvincent/laravel-rateable)
 
-Provides a trait to allow rating of any Eloquent models within your app for Laravel 6/7.
+Provides a trait to allow rating of any Eloquent models within your app for Laravel 6/7/8/9.
 
 Ratings could be fivestar style, or simple +1/-1 style.
 
@@ -13,7 +12,8 @@ Ratings could be fivestar style, or simple +1/-1 style.
 ## Compatability
 
 Laravel versions < 6.x should use the 1.x releases
-While 2.x release may at least temporarily work with most recent laravel 5.x versions, any new development will be explicitly focused on laravel 6.x+ compatibility and breaking changes may occur, therefore, installation of 2.x releases with laravel versions < 6.x is not recommended, and done at your own peril.
+
+Laravel versions >= 6.x should use 2.x+ releases
 
 ## Installation
 
