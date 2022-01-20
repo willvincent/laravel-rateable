@@ -13,7 +13,9 @@ Ratings could be fivestar style, or simple +1/-1 style.
 
 Laravel versions < 6.x should use the 1.x releases
 
-Laravel versions >= 6.x should use 2.x+ releases
+Laravel versions >= 6.x and < 8.x should use 2.x+ releases
+
+Laravel versions >= 8.x should use the 3.x releases
 
 ## Installation
 
