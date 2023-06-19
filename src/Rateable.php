@@ -2,6 +2,7 @@
 
 namespace willvincent\Rateable;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 trait Rateable
@@ -15,22 +16,37 @@ trait Rateable
      *
      * @return Rating
      */
-    public function rate($value, $comment = null)
+
+     private function byUser($userId = null) {
+        $user = Auth::id();
+        try {
+            $newUser = User::find($userId);
+            if(!is_null($newUser)) {
+                $user = $newUser->id;
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        return $user;
+     }
+    public function rate($value, $comment = null, $userId = null)
     {
+        $user_id = $this->byUser($userId);
         $rating = new Rating();
         $rating->rating = $value;
         $rating->comment = $comment;
-        $rating->user_id = Auth::id();
+        $rating->user_id = $user_id;
 
         $this->ratings()->save($rating);
     }
 
-    public function rateOnce($value, $comment = null)
+    public function rateOnce($value, $comment = null, $userId = null)
     {
+        $user_id = $this->byUser($userId);
         $rating = Rating::query()
             ->where('rateable_type', '=', $this->getMorphClass())
             ->where('rateable_id', '=', $this->id)
-            ->where('user_id', '=', Auth::id())
+            ->where('user_id', '=', $user_id)
             ->first()
         ;
 
@@ -68,22 +84,26 @@ trait Rateable
         return $this->ratings()->groupBy('user_id')->pluck('user_id')->count();
     }
 
-    public function userAverageRating()
+    public function userAverageRating($userId = null)
     {
-        return $this->ratings()->where('user_id', Auth::id())->avg('rating');
+        $user_id = $this->byUser($userId);
+        return $this->ratings()->where('user_id', $user_id)->avg('rating');
     }
 
-    public function userSumRating()
+    public function userSumRating($userId = null)
     {
-        return $this->ratings()->where('user_id', Auth::id())->sum('rating');
+        $user_id = $this->byUser($userId);
+        return $this->ratings()->where('user_id', $user_id)->sum('rating');
     }
 
     public function ratingPercent($max = 5)
     {
         $quantity = $this->ratings()->count();
         $total = $this->sumRating();
+        // return "$total || $quantity";
 
-        return ($quantity * $max) > 0 ? $total / (($quantity * $max) / 100) : 0;
+        return ($quantity * $max) > 0 ? ceil(($total / ($quantity * $max)) * 100) : 0;
+        // return ($quantity * $max) > 0 ? $total / (($quantity * $max) / 100) : 0;
     }
 
     // Getters
