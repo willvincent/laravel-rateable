@@ -17,10 +17,10 @@ trait Rateable
      * @return Rating
      */
 
-     private function byUser($userId = null) {
+     private function byUser($user_id = null) {
         $user = Auth::id();
         try {
-            $newUser = User::find($userId);
+            $newUser = User::find($user_id);
             if(!is_null($newUser)) {
                 $user = $newUser->id;
             }
@@ -29,9 +29,9 @@ trait Rateable
         }
         return $user;
      }
-    public function rate($value, $comment = null, $userId = null)
+    public function rate($value, $comment = null, $user_id = null)
     {
-        $user_id = $this->byUser($userId);
+        $user_id = $this->byUser($user_id);
         $rating = new Rating();
         $rating->rating = $value;
         $rating->comment = $comment;
@@ -40,9 +40,9 @@ trait Rateable
         $this->ratings()->save($rating);
     }
 
-    public function rateOnce($value, $comment = null, $userId = null)
+    public function rateOnce($value, $comment = null, $user_id = null)
     {
-        $user_id = $this->byUser($userId);
+        $user_id = $this->byUser($user_id);
         $rating = Rating::query()
             ->where('rateable_type', '=', $this->getMorphClass())
             ->where('rateable_id', '=', $this->id)
@@ -84,26 +84,30 @@ trait Rateable
         return $this->ratings()->groupBy('user_id')->pluck('user_id')->count();
     }
 
-    public function userAverageRating($userId = null)
+    public function userAverageRating($user_id = null)
     {
-        $user_id = $this->byUser($userId);
+        $user_id = $this->byUser($user_id);
         return $this->ratings()->where('user_id', $user_id)->avg('rating');
     }
 
-    public function userSumRating($userId = null)
+    public function userSumRating($user_id = null)
     {
-        $user_id = $this->byUser($userId);
+        $user_id = $this->byUser($user_id);
         return $this->ratings()->where('user_id', $user_id)->sum('rating');
     }
 
-    public function ratingPercent($max = 5)
+    public function ratingPercent($max = 5, bool $rounded = false)
     {
         $quantity = $this->ratings()->count();
         $total = $this->sumRating();
         // return "$total || $quantity";
 
-        return ($quantity * $max) > 0 ? ceil(($total / ($quantity * $max)) * 100) : 0;
-        // return ($quantity * $max) > 0 ? $total / (($quantity * $max) / 100) : 0;
+        $is_rounded = is_bool($rounded)? $rounded: false;
+        if($rounded) {
+            return ($quantity * $max) > 0 ? ceil(($total / ($quantity * $max)) * 100) : 0;
+        } else { 
+            return ($quantity * $max) > 0 ? $total / (($quantity * $max) / 100) : 0;
+        }
     }
 
     // Getters
