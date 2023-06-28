@@ -20,15 +20,18 @@ trait Rateable
      private function byUser($user_id = null) {
         $user = Auth::id();
         try {
-            $newUser = User::find($user_id);
-            if(!is_null($newUser)) {
-                $user = $newUser->id;
+            if(!is_null($user_id)) {
+                $newUser = User::find($user_id);
+                if(!is_null($newUser)) {
+                    $user = $newUser->id;
+                }
             }
         } catch (\Throwable $th) {
             //throw $th;
         }
         return $user;
      }
+    
     public function rate($value, $comment = null, $user_id = null)
     {
         $user_id = $this->byUser($user_id);
