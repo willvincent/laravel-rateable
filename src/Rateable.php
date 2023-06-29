@@ -3,6 +3,7 @@
 namespace willvincent\Rateable;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 trait Rateable
 {
