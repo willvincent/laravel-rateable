@@ -2,7 +2,6 @@
 
 namespace willvincent\Rateable;
 
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 trait Rateable
@@ -22,7 +21,12 @@ trait Rateable
             return Auth::id();
         }
 
-        return (!! User::whereId($user_id)->count())? $user_id: Auth::id();
+         $userClass = Config::get('auth.model');
+          if (is_null($userClass)) {
+            $userClass = Config::get('auth.providers.users.model');
+          }
+
+        return (!! $userClass::whereId($user_id)->count())? $user_id: Auth::id();
      }
     
     public function rate($value, $comment = null, $user_id = null)
