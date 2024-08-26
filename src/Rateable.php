@@ -56,7 +56,7 @@ trait Rateable
             $rating->comment = $comment;
             $rating->save();
         } else {
-            $this->rate($value, $comment);
+            $this->rate($value, $comment, $user_id);
         }
     }
 
