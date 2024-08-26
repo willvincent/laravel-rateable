@@ -18,7 +18,7 @@ trait Rateable
      */
 
      private function byUser($user_id = null) {
-        if(!! $user_id) {
+        if(! $user_id) {
             return Auth::id();
         }
 
