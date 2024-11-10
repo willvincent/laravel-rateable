@@ -4,7 +4,7 @@
 
 [![Total Downloads](https://poser.pugx.org/willvincent/laravel-rateable/downloads.svg)](https://packagist.org/packages/willvincent/laravel-rateable) [![Monthly Downloads](https://poser.pugx.org/willvincent/laravel-rateable/d/monthly.png)](https://packagist.org/packages/willvincent/laravel-rateable) [![Daily Downloads](https://poser.pugx.org/willvincent/laravel-rateable/d/daily.png)](https://packagist.org/packages/willvincent/laravel-rateable)
 
-Provides a trait to allow rating of any Eloquent models within your app for Laravel 6/7/8/9.
+Provides a trait to allow rating of any Eloquent models within your app for Laravel versions 6 and higher.
 
 Ratings could be fivestar style, or simple +1/-1 style.
 
