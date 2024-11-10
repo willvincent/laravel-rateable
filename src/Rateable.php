@@ -18,7 +18,7 @@ trait Rateable
      */
 
      private function byUser($user_id = null) {
-        if(!! $user_id) {
+        if(! $user_id) {
             return Auth::id();
         }
 
@@ -56,7 +56,7 @@ trait Rateable
             $rating->comment = $comment;
             $rating->save();
         } else {
-            $this->rate($value, $comment);
+            $this->rate($value, $comment, $user_id);
         }
     }
 
